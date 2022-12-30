@@ -1,0 +1,4 @@
+# itinsight.github.io
+
+configure DNS with google domain : 
+https://dev.to/trentyang/how-to-setup-google-domain-for-github-pages-1p58#:~:text=Go%20to%20your%20github%20repository%20settings%20page%2C%20under%20Settings%20%3E%20GitHub,checkbox%20and%20secure%20your%20site!
