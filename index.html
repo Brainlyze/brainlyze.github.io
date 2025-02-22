@@ -14,6 +14,8 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
+  <script src="https://www.youtube.com/iframe_api?v=3.0.20" id="YTAPI"></script>
+
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -60,10 +62,21 @@
       padding: 60px 0;
     }
     .about-img {
-      background: url('team.jpg') center/cover no-repeat;
+      position: relative;
       width: 100%;
-      min-height: 300px;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      overflow: hidden;
       border-radius: 8px;
+    }
+
+    .about-img iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      pointer-events: none;
     }
 
     /* SERVICES SECTION (Dark) */
@@ -216,14 +229,19 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mb-4 mb-lg-0">
           <p class="lead">
-            Brainlyze is a consulting company specialized in modern DATA, AI, and modern platforms. Our expert team includes data architects, engineers, scientists, ops professionals, finops specialists, governance consultants, and more.
+            Brainlyze is a leading consulting company specializing in modern DATA, AI, and cutting-edge platform solutions. We provide comprehensive consulting services tailored to meet your unique business needs, from strategic data architecture and intelligent cloud solutions to advanced AI implementations and platform optimizations.
           </p>
           <p class="lead">
-            Our mission is to provide creative solutions that drive innovation and maximize your organization's success.
+            Our expert team comprises data architects, engineers, scientists, ops professionals, FinOps specialists, governance consultants, and more, ensuring end-to-end support throughout your digital transformation journey.
+          </p>
+          <p>
+            Our mission is to deliver innovative consulting solutions that drive growth, foster agility, and maximize your organization’s success in an ever-evolving digital landscape.
           </p>
         </div>
         <div class="col-lg-6">
-          <div class="about-img"></div>
+          <div class="about-img">
+            <div id="video-placeholder"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -510,6 +528,35 @@
       const body = encodeURIComponent(`First Name: ${firstName}\nFamily Name: ${familyName}\nEmail: ${email}\n\nMessage:\n${message}`);
       window.location.href = `mailto:contact@brainlyze.com?subject=${subject}&body=${body}`;
     }
+  </script>
+  <script>
+  // Load the IFrame Player API
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('video-placeholder', {
+      videoId: '9gJfcDG23Q4',
+      playerVars: {
+        autoplay: 1,
+        mute: 1,
+        loop: 1,
+        playlist: '9gJfcDG23Q4', // Required for looping
+        controls: 0,
+        modestbranding: 1,
+        rel: 0,
+        showinfo: 0,
+        iv_load_policy: 3,
+        fs: 0
+      },
+      events: {
+        'onReady': onPlayerReady
+      }
+    });
+  }
+
+  // Autoplay the video when ready
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
   </script>
 </body>
 </html>
